@@ -1,1 +1,2 @@
-libopencm3/* linguist-vendored
+libopencm3/*.c linguist-vendored
+libopencm3/*.h linguist-vendored
