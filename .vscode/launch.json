@@ -1,29 +1,44 @@
 {
+  "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Application",
-      "cwd": "${workspaceFolder}/app",
-      "executable": "./firmware.elf",
-      "serverpath": "/usr/bin/JLinkGDBServer",
-      "servertype": "jlink",
-      "request": "launch",
-      "type": "cortex-debug",
-      "device": "STM32F401RE",
-      "runToEntryPoint": "main",
-      "interface": "swd",
-      "preLaunchTask": "build_debug"
+        "name": "(gdb) Launch",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "$/home/aditya/bare-metal-series/app/src/firmware.elf",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "Set Disassembly Flavor to Intel",
+                "text": "-gdb-set disassembly-flavor intel",
+                "ignoreFailures": true
+            }
+        ]
     },
-    {
-      "name": "Attach to active",
-      "cwd": "${workspaceFolder}/app",
-      "executable": "./firmware.elf",
-      "serverpath": "/usr/bin/JLinkGDBServer",
-      "servertype": "jlink",
-      "request": "attach",
-      "type": "cortex-debug",
-      "device": "STM32F401RE",
-      "runToEntryPoint": "main",
-      "interface": "swd",
-    }
+    
+      {
+          "name": "Renode Debug",
+          "cwd": "$/home/aditya/bare-metal-series/app",
+          "executable": "./firmware.elf",
+          "request": "launch",
+          "type": "cortex-debug",
+          "servertype": "external",
+          "gdbTarget": "localhost:3333",
+          "gdbPath": "gdb-multiarch",
+          "showDevDebugOutput": "raw",
+          "preLaunchCommands":[
+              "monitor start"
+          ]
+      }
   ]
 }

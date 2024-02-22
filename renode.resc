@@ -1,0 +1,9 @@
+$bin?=@app/firmware.elf
+
+# Create the board and load our binary
+mach create
+machine LoadPlatformDescription @platforms/boards/stm32f4_discovery-kit.repl
+sysbus LoadELF $bin
+
+# Start the GDB server
+machine StartGdbServer 3333
