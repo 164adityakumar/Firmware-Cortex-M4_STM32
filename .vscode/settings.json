@@ -10,7 +10,8 @@
     "pins.h": "c",
     "sync.h": "c",
     "ring-buffer.h": "c",
-    "flash_common_all.h": "c"
+    "flash_common_all.h": "c",
+    "common-defines.h": "c"
   },
   "workbench.colorCustomizations": {
     "minimap.background": "#00000000",
